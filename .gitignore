@@ -1,33 +1,20 @@
-# http://www.gnu.org/software/automake
+# dependencies
+/node_modules
+/jspm_packages
 
-Makefile.in
-/ar-lib
-/mdate-sh
-/py-compile
-/test-driver
-/ylwrap
+# testing
+/coverage
 
-# http://www.gnu.org/software/autoconf
+# production
+/build
 
-/autom4te.cache
-/autoscan.log
-/autoscan-*.log
-/aclocal.m4
-/compile
-/config.guess
-/config.h.in
-/config.sub
-/configure
-/configure.scan
-/depcomp
-/install-sh
-/missing
-/stamp-h1
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# https://www.gnu.org/software/libtool/
-
-/ltmain.sh
-
-# http://www.gnu.org/software/texinfo
-
-/texinfo.tex
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
