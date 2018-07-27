@@ -35,7 +35,7 @@ const doubledOver50 = arr.reduce((finalList, num) => {
 console.log(doubledOver50) // [60, 80]
 ```
 
-#### 2.2 对数组中元素进行统计
+#### 2.2 统计数组中相同项的个数
 
 ``` javascript
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'pogostick']
@@ -49,6 +49,12 @@ const transportation = data.reduce(function(obj, item) {
 }, {})
 
 console.log(transportation) // { car: 5, truck: 3, bike: 2, walk: 2, van: 2, pogostick: 1 }
+
+// 另一种更简洁的写法
+const transportation = data.reduce(function(obj, item) {
+  obj[item] = obj[item] ? ++obj[item] : 1
+  return obj
+}, {})
 ```
 
 #### 2.3 累加，关联
@@ -234,4 +240,16 @@ function makeLooper(arr) {
         return this.current()
     }
 }
+```
+
+### 9. 将数组平铺到指定深度
+
+``` javascript
+const flatten = (arr, depth = 1) => // 箭头符号后可以使用()或省略，不能使用{}
+  depth != 1
+    ? arr.reduce((a, v) => a.concat(Array.isArray(v) ? flatten(v, depth - 1) : v), [])
+    : arr.reduce((a, v) => a.concat(v), [])
+
+flatten([1, [2], 3, 4]) // [ 1, 2, 3, 4 ]
+flatten([1, [2, [3, [4, 5], 6], 7], 8], 2) // [ 1, 2, 3, [ 4, 5 ], 6, 7, 8 ]
 ```

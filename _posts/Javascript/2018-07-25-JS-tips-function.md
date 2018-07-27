@@ -97,3 +97,16 @@ const round = (n, decimals = 0) => Number(`${Math.round(`${n}e${decimals}`)}e-${
 round(1.345, 2) // 1.35, 1.345e2 = 134.5, 135e-2 = 1.35
 round(1.345, 1) // 1.3
 ```
+
+### 6. 接收函数返回的多个结果
+例：从/post中获取一个帖子，然后从/comments中获取相关评论，使用async/await时，函数把返回值放在一个数组中，此时，使用数组解构就可以把返回值直接赋给相应的变量：
+``` javascript
+async function getFullPost() {
+    return await Promise.all([
+        fetch('/post'),
+        fetch('/comments')
+    ])
+}
+
+const [post, comments] = getFullPost()
+```

@@ -32,3 +32,17 @@ const num = 3
 !!(num % 2) // true
 ```
 
+### 4. 四舍五入到指定小数位数
+使用科学计数法和模板字符串
+``` javascript
+const round = (n, decimals = 0) => Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`)
+round(1.345, 2) // 1.35, 1.345e2 = 134.5, 135e-2 = 1.35
+round(1.345, 1) // 1.3
+```
+
+### 5. 数字补0操作
+当需要把一位数字显示成两位的时候，可以使用补0操作，如（2018.07.01）
+``` javascript
+const addZero1 = (num, len = 2) => (`0${num}`).slice(-len)
+const addZero2 = (num, len = 2) => (`${num}`).padStart(lend, '0')
+```
