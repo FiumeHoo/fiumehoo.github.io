@@ -1,0 +1,13 @@
+<div class="list">
+  <input type="text" class="search" placeholder="Type to filter">
+  <ul>
+    {%- for post in list -%}
+    <li {% if post.url == page.url %}class="on"{% endif %}>
+      <a href="{{ post.url | relative_url }}">
+        <div class="title">{{ post.title | escape }}</div>
+        <div class="date">{{ post.date | date_to_string }}</div>
+      </a>
+    </li>
+    {%- endfor -%}
+  </ul>
+</div>

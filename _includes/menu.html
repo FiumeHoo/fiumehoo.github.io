@@ -1,0 +1,9 @@
+<div class="sidebar">
+  <ul>
+    <li><a href="/" class="menu-item latest on">Latest</a></li>
+    {%- assign categories = site.posts | group_by_exp: 'post', 'post.categories' -%}
+    {%- for item in categories reversed -%}
+    <li><a href="/{{ item.name }}" class="menu-item">{{ item.name }}</a></li>
+    {%- endfor -%}
+  </ul>
+</div>
